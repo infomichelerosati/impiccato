@@ -1,4 +1,4 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -24,7 +24,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 98vh; /* Use min-height to ensure content fills the screen */
+            min-height: 98vh;
         }
         .main-content {
             display: flex;
@@ -169,85 +169,315 @@
     <script>
         // Game state and variables
         const words = [
-            "antropomorfismo", "biodiversità", "circostanze", "conseguenze",
-            "contraddistinguono", "cosmopolita", "democrazia", "disorientamento",
-            "elettroencefalografia", "filantropia", "giurisprudenza",
-            "inconscio", "infrastruttura", "irreversibile", "metamorfosi",
-            "microbiologia", "multiculturalismo", "neuroscienza", "onomatopeico",
-            "paracadutismo", "perennemente", "rinascimento", "responsabilità",
-            "stratificazione", "sostenibilità", "telecomunicazioni", "trasformazione",
-            "accondiscendenza", "anticonformista", "caratterizzazione",
-            "concomitanza", "contemporaneamente", "contrapposizione",
-            "estemporaneo", "eterogeneità", "fenomenologia", "giustapposizione",
-            "inconsapevolmente", "interdisciplinare", "introspezione",
-            "irrazionalità", "onnicomprensivo", "paragonabile", "plausibilità",
-            "prospettiva", "psicoanalisi", "rappresentazione", "reciprocità",
-            "sintetizzazione", "sovrastimare", "trasgressione", "universalismo",
-            "valutazione", "vulnerabilità", "zeppolamento", "zoccolatura",
-            "sostenibilita", "preliminarmente", "interconnessione", "interpretazione"
+            "abbreviazione", "abdicazione", "abnegazione", "abominio", "abrogazione", "assuefazione", "allucinazione", "anticostituzionalità", "antropomorfismo", "biodiversità", "biotecnologia", "caratterizzazione", "circostanze", "coabitazione", "collaborazione", "comunicazione", "concomitanza", "conoscenza", "contrapposizione", "conseguenze", "controindicazione", "convenzionale", "cosmopolita", "democrazia", "destinazione", "determinazione", "discriminazione", "disorientamento", "distribuzione", "elettroencefalografia", "estemporaneo", "eterogeneità", "evoluzione", "familiarizzazione", "fenomenologia", "fermentazione", "finalizzazione", "filantropia", "flessibilità", "giurisprudenza", "giustapposizione", "identificazione", "illuminazione", "immobiliare", "immigrazione", "incompatibile", "inconscio", "inconsapevolmente", "incredibile", "indipendenza", "industrializzazione", "infrastruttura", "insegnamento", "interpretazione", "interconnessione", "interdisciplinare", "introspezione", "irrazionalità", "irreversibile", "legalizzazione", "liberazione", "manifestazione", "matematico", "mediazione", "metamorfosi", "microbiologia", "modificazione", "multiculturalismo", "neuroscienza", "obiettività", "onnicomprensivo", "onomatopeico", "organizzativo", "paracadutismo", "paragonabile", "perennemente", "pessimistico", "pianificazione", "plausibilità", "popolarizzazione", "possibilità", "premeditazione", "preoccupazione", "preliminarmente", "progettazione", "prospettiva", "psicoanalisi", "rappresentazione", "reciprocità", "redistribuzione", "responsabilità", "rinascimento", "rivoluzione", "sintetizzazione", "sovrastimare", "sostenibilità", "stratificazione", "telecomunicazioni", "termodinamica", "tolleranza", "trasformazione", "universalismo", "valutazione", "verosimiglianza", "volontariato", "vulnerabilità", "zeppolamento", "zoccolatura", "zoomorfismo", "autenticazione", "burocrazia", "catastrofico", "circumnavigazione", "condizionatore", "conglomerato", "contemporaneamente", "contraffazione", "corresponsione", "decentralizzazione", "decolonizzazione", "decontestualizzazione", "declassificazione", "demistificazione", "derattizzazione", "desensibilizzazione", "destrutturazione", "disumanizzazione", "diversificazione", "economicità", "emancipazione", "estetizzazione", "estrapolazione", "generalizzazione", "geolocalizzazione", "globalizzazione", "industrializzazione", "infantilizzazione", "informatizzazione", "interconnettività", "interscambiabilità", "intramuros", "irrecuperabile", "irrimediabile", "macroeconomia", "misoginia", "monopolizzazione", "neologismo", "neutralizzazione", "nonchalance", "omologazione", "pantomima", "personalizzazione", "pluriennale", "prestigioso", "privatizzazione", "problematico", "psicologico", "quantificazione", "razionalizzazione", "reciprocità", "riabilitazione", "riorganizzazione", "riqualificazione", "semplicistico", "socializzazione", "sovraccarico", "spazializzazione", "specializzazione", "strutturazione", "subalterno", "subconscio", "superficialità", "tecnologia", "telepatia", "terremoto", "transizione", "transoceanico", "trasparenza", "trasversalità", "unilateralmente", "valorizzazione", "visionario", "vituperio", "zonizzazione", "zoologia", "abbattimento", "accessibilità", "accettabilità", "acquisizione", "adattabilità", "addestramento", "amministratore", "anticipazione", "apprendimento", "articolazione", "assicurazione", "autorevolezza", "autovalutazione", "autorizzazione", "beneficenza", "chiarificazione", "cimitero", "civilizzazione", "classificazione", "codificazione", "collaborativo", "confortevole", "considerazione", "consultazione", "contestualizzazione", "controversia", "cooperazione", "corrispondenza", "cosmografia", "costruzione", "declinazione", "decomposizione", "decorazione", "demolizione", "denominazione", "depressione", "descrizione", "designazione", "dettagliato", "digitalizzazione", "direzione", "discontinuità", "distinzione", "diversificato", "docente", "documentazione", "educazione", "efficienza", "elaborazione", "eliminazione", "emergenza", "emissione", "emozione", "espressione", "estensione", "facilitazione", "fascismo", "formazione", "fondamentale", "gestione", "globalizzazione", "identità", "illustrazione", "immaginazione", "impegno", "implementazione", "inclusione", "indagine", "informazione", "innovazione", "installazione", "istruzione", "leadership", "legittimazione", "localizzazione", "manutenzione", "materialistico", "meccanismo", "memorizzazione", "motivazione", "necessità", "negatività", "normalizzazione", "notificazione", "obbligatorio", "operazione", "organizzazione", "partecipazione", "pianificazione", "possibilità", "potenziale", "precisazione", "prevenzione", "procedura", "professionalità", "programmazione", "promozione", "protezione", "psicologico", "qualificazione", "quantitativo", "realtà", "registrazione", "regolamentazione", "relazione", "rendimento", "rilevazione", "riconoscimento", "risoluzione", "rispetto", "riuso", "sacrificio", "salvaguardia", "sicurezza", "significato", "soluzione", "specializzazione", "struttura", "sviluppo", "sistematico", "tecnologico", "telecamera", "televisore", "testimonianza", "trasporto", "trattamento", "utilizzazione", "validazione", "valutativo", "variabilità", "visualizzazione", "vulnerabile"
         ];
         
         const wordDescriptions = {
+            "ABBREVIAZIONE": "La riduzione di una parola o un gruppo di parole a una forma più breve.",
+            "ABDICAZIONE": "Rinuncia volontaria a un trono o a un potere.",
+            "ABNEGAZIONE": "Rinuncia ai propri interessi a favore di quelli altrui.",
+            "ABOMINIO": "Qualcosa di orribile o detestabile.",
+            "ABROGAZIONE": "L'annullamento di una legge o di una norma.",
+            "ASSUEFAZIONE": "Il processo di abituarsi a qualcosa, diventandone dipendente.",
+            "ALLUCINAZIONE": "Una percezione sensoriale che non corrisponde alla realtà.",
+            "ANTICOSTITUZIONALITÀ": "La non conformità di una legge alla costituzione.",
             "ANTROPOMORFISMO": "L'attribuzione di caratteristiche umane a esseri non umani o a cose inanimate.",
             "BIODIVERSITÀ": "La varietà di organismi viventi, di specie e di ecosistemi.",
+            "BIOTECNOLOGIA": "L'uso di organismi viventi per scopi industriali o medici.",
+            "CARATTERIZZAZIONE": "L'atto di definire i tratti distintivi di qualcosa o qualcuno.",
             "CIRCOSTANZE": "Gli eventi o le condizioni che accompagnano un fatto.",
+            "COABITAZIONE": "La convivenza di più persone nello stesso luogo.",
+            "COLLABORAZIONE": "L'atto di lavorare insieme per un obiettivo comune.",
+            "COMUNICAZIONE": "Il processo di trasmissione e ricezione di informazioni.",
+            "CONCOMITANZA": "La simultaneità di due o più eventi.",
+            "CONOSCENZA": "L'insieme delle nozioni acquisite e delle facoltà intellettuali.",
+            "CONTRAPPOSIZIONE": "Stato di conflitto o di contrasto tra due elementi.",
             "CONSEGUENZE": "Gli effetti, le ripercussioni di un'azione o di un evento.",
-            "CONTRADDISTINGUONO": "Verbo che indica un tratto distintivo o una caratteristica che differenzia qualcosa.",
+            "CONTROINDICAZIONE": "Una circostanza che sconsiglia un determinato trattamento o farmaco.",
+            "CONVENZIONALE": "Conforme a una convenzione o a una norma stabilita.",
             "COSMOPOLITA": "Cittadino del mondo; persona che non ha pregiudizi legati alla propria nazionalità.",
             "DEMOCRAZIA": "Sistema di governo in cui il potere appartiene al popolo.",
+            "DESTINAZIONE": "Il luogo verso cui ci si dirige o lo scopo di qualcosa.",
+            "DETERMINAZIONE": "Fermezza nel perseguire un obiettivo.",
+            "DISCRIMINAZIONE": "Trattamento ineguale basato su pregiudizi.",
             "DISORIENTAMENTO": "Perdita del senso dell'orientamento o stato di confusione mentale.",
+            "DISTRIBUZIONE": "L'atto di ripartire qualcosa tra più destinatari.",
             "ELETTROENCEFALOGRAFIA": "Tecnica che registra l'attività elettrica del cervello.",
-            "FILANTROPIA": "Amore per l'umanità, che si manifesta con azioni di aiuto concreto.",
-            "GIURISPRUDENZA": "L'insieme delle sentenze dei tribunali o la scienza del diritto.",
-            "INCONSCIO": "La parte della mente che non è direttamente accessibile alla coscienza.",
-            "INFRASTRUTTURA": "L'insieme delle strutture e dei servizi di base necessari per il funzionamento di una società.",
-            "IRREVERSIBILE": "Che non può tornare indietro, non modificabile.",
-            "METAMORFOSI": "Processo di trasformazione profonda di un essere vivente o di una cosa.",
-            "MICROBIOLOGIA": "La scienza che studia i microrganismi.",
-            "MULTICULTURALISMO": "Coesistenza di diverse culture all'interno di una stessa società.",
-            "NEUROSCIENZA": "La scienza che studia il sistema nervoso e il cervello.",
-            "ONOMATOPEICO": "Che riproduce suoni o rumori naturali.",
-            "PARACADUTISMO": "Lo sport di lanciarsi con il paracadute da un aereo.",
-            "PERENNEMENTE": "In modo continuativo, per sempre.",
-            "RINASCIMENTO": "Importante periodo storico di rinascita artistica e culturale in Europa.",
-            "RESPONSABILITÀ": "Il dovere di rispondere delle proprie azioni.",
-            "STRATIFICAZIONE": "Disposizione in strati o livelli.",
-            "SOSTENIBILITÀ": "La capacità di mantenere un processo o una condizione nel tempo.",
-            "TELECOMUNICAZIONI": "Il processo di comunicazione a distanza tramite tecnologie elettroniche.",
-            "TRASFORMAZIONE": "Il processo di cambiare forma o natura.",
-            "ACCONDISCENDENZA": "Atteggiamento di chi si adatta facilmente alla volontà altrui.",
-            "ANTICONFORMISTA": "Chi rifiuta le convenzioni sociali e le regole stabilite.",
-            "CARATTERIZZAZIONE": "L'atto di definire i tratti distintivi di qualcosa o qualcuno.",
-            "CONCOMITANZA": "La simultaneità di due o più eventi.",
-            "CONTEMPORANEAMENTE": "Nello stesso momento.",
-            "CONTRAPPOSIZIONE": "Stato di conflitto o di contrasto tra due elementi.",
             "ESTEMPORANEO": "Che viene fatto o detto sul momento, senza preparazione.",
             "ETEROGENEITÀ": "Caratteristica di essere composto da elementi diversi.",
+            "EVOLUZIONE": "Processo di cambiamento e sviluppo graduale.",
+            "FAMILIARIZZAZIONE": "L'atto di prendere confidenza con qualcosa.",
             "FENOMENOLOGIA": "Lo studio dei fenomeni così come si manifestano alla coscienza.",
+            "FERMENTAZIONE": "Processo chimico di trasformazione di sostanze organiche.",
+            "FINALIZZAZIONE": "Il processo di dare un fine o uno scopo.",
+            "FILANTROPIA": "Amore per l'umanità, che si manifesta con azioni di aiuto concreto.",
+            "FLESSIBILITÀ": "La capacità di adattarsi a nuove situazioni.",
+            "GIURISPRUDENZA": "L'insieme delle sentenze dei tribunali o la scienza del diritto.",
             "GIUSTAPPOSIZIONE": "L'atto di mettere due cose vicine, senza mescolarle.",
+            "IDENTIFICAZIONE": "L'atto di riconoscere o di stabilire l'identità di qualcosa o qualcuno.",
+            "ILLUMINAZIONE": "L'atto o l'effetto di illuminare, o una profonda intuizione.",
+            "IMMOBILIARE": "Che riguarda la proprietà di beni immobili.",
+            "IMMIGRAZIONE": "Il movimento di persone che si stabiliscono in un paese straniero.",
+            "INCOMPATIBILE": "Che non può coesistere o andare d'accordo con qualcos'altro.",
+            "INCONSCIO": "La parte della mente che non è direttamente accessibile alla coscienza.",
             "INCONSAPEVOLMENTE": "Senza esserne coscienti.",
+            "INCREDIBILE": "Che non può essere creduto, straordinario.",
+            "INDIPENDENZA": "Stato di autonomia e libertà da ogni controllo esterno.",
+            "INDUSTRIALIZZAZIONE": "Il processo di sviluppo dell'industria in una regione.",
+            "INFRASTRUTTURA": "L'insieme delle strutture e dei servizi di base necessari per il funzionamento di una società.",
+            "INSEGNAMENTO": "L'attività di trasmettere conoscenze.",
+            "INTERPRETAZIONE": "L'atto di dare un significato o una spiegazione.",
+            "INTERCONNESSIONE": "Collegamento reciproco tra più elementi.",
             "INTERDISCIPLINARE": "Che coinvolge due o più discipline scientifiche o accademiche.",
             "INTROSPEZIONE": "Analisi interiore dei propri stati d'animo.",
             "IRRAZIONALITÀ": "La qualità di essere contrario alla ragione.",
+            "IRREVERSIBILE": "Che non può tornare indietro, non modificabile.",
+            "LEGALIZZAZIONE": "L'atto di rendere legale un'attività.",
+            "LIBERAZIONE": "L'atto di rendere libero o di essere liberato.",
+            "MANIFESTAZIONE": "Un evento pubblico o l'atto di manifestare un'idea.",
+            "MATEMATICO": "Relativo alla matematica o chi la pratica.",
+            "MEDIAZIONE": "L'intervento di una terza parte per risolvere un conflitto.",
+            "METAMORFOSI": "Processo di trasformazione profonda di un essere vivente o di una cosa.",
+            "MICROBIOLOGIA": "La scienza che studia i microrganismi.",
+            "MODIFICAZIONE": "L'atto o il risultato di un cambiamento.",
+            "MULTICULTURALISMO": "Coesistenza di diverse culture all'interno di una stessa società.",
+            "NEUROSCIENZA": "La scienza che studia il sistema nervoso e il cervello.",
+            "OBIETTIVITÀ": "La qualità di essere imparziale e oggettivo.",
             "ONNICOMPRENSIVO": "Che comprende ogni cosa.",
+            "ONOMATOPEICO": "Che riproduce suoni o rumori naturali.",
+            "ORGANIZZATIVO": "Che riguarda l'organizzazione di qualcosa.",
+            "PARACADUTISMO": "Lo sport di lanciarsi con il paracadute da un aereo.",
             "PARAGONABILE": "Che può essere messo a confronto con un'altra cosa.",
+            "PERENNEMENTE": "In modo continuativo, per sempre.",
+            "PESSIMISTICO": "Che tende a vedere il lato negativo delle cose.",
+            "PIANIFICAZIONE": "Il processo di definire piani per il futuro.",
             "PLAUSIBILITÀ": "La qualità di essere verosimile o credibile.",
+            "POPOLARIZZAZIONE": "L'atto di rendere qualcosa popolare o diffuso.",
+            "POSSIBILITÀ": "La condizione di ciò che è possibile.",
+            "PREMEDITAZIONE": "La pianificazione di un atto in anticipo.",
+            "PREOCCUPAZIONE": "Stato di ansia o turbamento per qualcosa.",
+            "PRELIMINARMENTE": "In via preliminare, in anticipo.",
+            "PROGETTAZIONE": "La fase di ideazione e pianificazione di un progetto.",
             "PROSPETTIVA": "Punto di vista o modo di vedere le cose.",
             "PSICOANALISI": "Metodo di indagine psicologica fondato da Freud.",
             "RAPPRESENTAZIONE": "L'azione di rendere presente qualcosa.",
             "RECIPROCITÀ": "Corrispondenza di un'azione o un sentimento.",
+            "REDISTRIBUZIONE": "L'atto di ridistribuire qualcosa.",
+            "RESPONSABILITÀ": "Il dovere di rispondere delle proprie azioni.",
+            "RINASCIMENTO": "Importante periodo storico di rinascita artistica e culturale in Europa.",
+            "RIVOLUZIONE": "Un cambiamento radicale e spesso violento.",
             "SINTETIZZAZIONE": "L'atto di riassumere o ridurre ai punti essenziali.",
             "SOVRASTIMARE": "Valutare in modo eccessivo qualcosa.",
-            "TRASGRESSIONE": "Violazione di una regola o di una legge.",
+            "SOSTENIBILITÀ": "La capacità di mantenere un processo o una condizione nel tempo.",
+            "STRATIFICAZIONE": "Disposizione in strati o livelli.",
+            "TELECOMUNICAZIONI": "Il processo di comunicazione a distanza tramite tecnologie elettroniche.",
+            "TERMODINAMICA": "Branca della fisica che studia le trasformazioni dell'energia.",
+            "TOLLERANZA": "La capacità di accettare opinioni o comportamenti diversi dai propri.",
+            "TRASFORMAZIONE": "Il processo di cambiare forma o natura.",
             "UNIVERSALISMO": "Dottrina che tende all'unità e alla comprensione generale.",
             "VALUTAZIONE": "L'atto di dare un giudizio o un valore.",
+            "VEROSIMIGLIANZA": "La qualità di sembrare vero o credibile.",
+            "VOLONTARIATO": "L'attività di chi presta servizio in modo volontario e gratuito.",
             "VULNERABILITÀ": "La condizione di essere esposti a danni o pericoli.",
             "ZEPPOLAMENTO": "In linguistica, difetto di pronuncia che consiste nel parlare con la zeppola.",
             "ZOCCOLATURA": "La parte inferiore di un edificio, o la decorazione alla base di un muro.",
-            "SOSTENIBILITA": "Capacità di mantenere un processo in equilibrio nel tempo.",
-            "PRELIMINARMENTE": "In via preliminare, in anticipo.",
-            "INTERCONNESSIONE": "Collegamento reciproco tra più elementi.",
-            "INTERPRETAZIONE": "L'atto di dare un significato o una spiegazione."
+            "ZOOMORFISMO": "L'attribuzione di forme o caratteristiche animali a divinità, persone o oggetti.",
+            "AUTENTICAZIONE": "La verifica dell'identità di un utente.",
+            "BUROCRAZIA": "Sistema di gestione basato su regole e procedure rigide.",
+            "CATASTROFICO": "Che causa una catastrofe o un disastro.",
+            "CIRCUMNAVIGAZIONE": "Il viaggio intorno al mondo.",
+            "CONDIZIONATORE": "Apparecchio per regolare la temperatura e l'umidità dell'aria.",
+            "CONGLOMERATO": "Un insieme di elementi diversi uniti insieme.",
+            "CONTEMPORANEAMENTE": "Nello stesso momento.",
+            "CONTRAFFAZIONE": "La riproduzione non autorizzata di un prodotto.",
+            "CORRESPONSIONE": "L'atto di dare in cambio qualcosa.",
+            "DECENTRALIZZAZIONE": "La distribuzione del potere o delle funzioni da un'autorità centrale.",
+            "DECOLONIZZAZIONE": "Il processo di indipendenza delle colonie.",
+            "DECONTESTUALIZZAZIONE": "L'atto di togliere un'idea o un evento dal suo contesto originale.",
+            "DECLASSIFICAZIONE": "L'atto di rendere pubbliche informazioni precedentemente segrete.",
+            "DEMISTIFICAZIONE": "Svelare un mistero o una falsità.",
+            "DERATTIZZAZIONE": "L'eliminazione dei ratti e dei topi da un'area.",
+            "DESENSIBILIZZAZIONE": "La riduzione della reattività a uno stimolo.",
+            "DESTRUTTURAZIONE": "L'atto di scomporre una struttura.",
+            "DISUMANIZZAZIONE": "La perdita di caratteristiche umane.",
+            "DIVERSIFICAZIONE": "L'atto di variare o rendere diverse le cose.",
+            "ECONOMICITÀ": "La qualità di essere economico o conveniente.",
+            "EMANCIPAZIONE": "La liberazione da una condizione di subordinazione.",
+            "ESTETIZZAZIONE": "L'atto di dare a qualcosa un carattere estetico.",
+            "ESTRAPOLAZIONE": "L'atto di dedurre un'informazione da dati noti.",
+            "GENERALIZZAZIONE": "L'estensione di un concetto a un ambito più ampio.",
+            "GEOLOCALIZZAZIONE": "L'identificazione della posizione geografica di qualcosa.",
+            "GLOBALIZZAZIONE": "Il processo di integrazione economica, culturale e politica a livello mondiale.",
+            "INFANTILIZZAZIONE": "L'atto di trattare una persona come un bambino.",
+            "INFORMATIZZAZIONE": "La conversione di dati in formato digitale.",
+            "INTERCONNETTIVITÀ": "La capacità di sistemi diversi di comunicare tra loro.",
+            "INTERSCAMBIABILITÀ": "La capacità di scambiare parti o elementi tra loro.",
+            "INTRAMUROS": "All'interno delle mura di una città.",
+            "IRRECUPERABILE": "Che non può essere recuperato.",
+            "IRRIMEDIABILE": "Che non può essere riparato o risolto.",
+            "MACROECONOMIA": "Lo studio del comportamento economico a livello nazionale o globale.",
+            "MISOGINIA": "Avversione o disprezzo per le donne.",
+            "MONOPOLIZZAZIONE": "L'atto di acquisire il controllo esclusivo di un mercato.",
+            "NEOLOGISMO": "Una nuova parola o un nuovo significato per una parola esistente.",
+            "NEUTRALIZZAZIONE": "L'atto di rendere neutro o inefficace.",
+            "NONCHALANCE": "Atteggiamento di indifferenza o calma disinvolta.",
+            "OMOLOGAZIONE": "L'atto di rendere conforme a un modello standard.",
+            "PANTOMIMA": "Uno spettacolo teatrale muto basato su gesti e movimenti.",
+            "PERSONALIZZAZIONE": "L'atto di adattare qualcosa alle esigenze individuali.",
+            "PLURIENNALE": "Che dura per più anni.",
+            "PRESTIGIOSO": "Che ha grande prestigio o autorevolezza.",
+            "PRIVATIZZAZIONE": "Il trasferimento di proprietà o servizi dal settore pubblico a quello privato.",
+            "PROBLEMATICO": "Che presenta problemi o difficoltà.",
+            "PSICOLOGICO": "Relativo alla psicologia o alla mente.",
+            "QUANTIFICAZIONE": "L'atto di misurare o esprimere qualcosa in quantità.",
+            "RAZIONALIZZAZIONE": "L'atto di rendere più razionale o efficiente.",
+            "RIABILITAZIONE": "Il recupero di abilità o funzioni perse.",
+            "RIORGANIZZAZIONE": "L'atto di organizzare nuovamente qualcosa.",
+            "RIQUALIFICAZIONE": "Il processo di aggiornare le qualifiche professionali.",
+            "SEMPLICISTICO": "Che riduce un problema complesso in modo troppo semplice.",
+            "SOCIALIZZAZIONE": "Il processo di integrazione di un individuo nella società.",
+            "SOVRACCARICO": "Un carico eccessivo o un'eccessiva pressione.",
+            "SPAZIALIZZAZIONE": "L'atto di organizzare qualcosa nello spazio.",
+            "SPECIALIZZAZIONE": "Il processo di concentrarsi su un'area specifica.",
+            "STRUTTURAZIONE": "L'atto di dare una struttura a qualcosa.",
+            "SUBALTERNO": "Che si trova in una posizione di subordinazione.",
+            "SUBCONSCIO": "Relativo a processi mentali non pienamente coscienti.",
+            "SUPERFICIALITÀ": "La mancanza di profondità o serietà.",
+            "TECNOLOGIA": "L'applicazione pratica delle conoscenze scientifiche.",
+            "TELEPATIA": "La presunta comunicazione del pensiero a distanza.",
+            "TERREMOTO": "Un'improvvisa scossa della crosta terrestre.",
+            "TRANSIZIONE": "Il passaggio da una condizione a un'altra.",
+            "TRANSOCEANICO": "Che attraversa l'oceano.",
+            "TRASPARENZA": "La qualità di essere trasparente, onesto e chiaro.",
+            "TRASVERSALITÀ": "La qualità di attraversare diversi ambiti o settori.",
+            "UNILATERALMENTE": "In modo unilaterale, da una sola parte.",
+            "VALORIZZAZIONE": "L'atto di dare valore o importanza a qualcosa.",
+            "VISIONARIO": "Chi ha idee originali e proiettate nel futuro.",
+            "VITUPERIO": "Un'offesa o un'ingiuria grave.",
+            "ZONIZZAZIONE": "La divisione di un'area in zone per scopi specifici.",
+            "ZOOLOGIA": "La scienza che studia gli animali.",
+            "ABBATTIMENTO": "L'atto di abbattere o la diminuzione di qualcosa.",
+            "ACCESSIBILITÀ": "La qualità di essere facilmente accessibile.",
+            "ACCETTABILITÀ": "La qualità di essere accettabile.",
+            "ACQUISIZIONE": "L'atto di acquisire o comprare qualcosa.",
+            "ADATTABILITÀ": "La capacità di adattarsi a nuove condizioni.",
+            "ADDESTRAMENTO": "L'atto di addestrare o addestrarsi.",
+            "AMMINISTRATORE": "Chi gestisce o amministra qualcosa.",
+            "ANTICIPAZIONE": "L'atto di anticipare un evento.",
+            "APPRENDIMENTO": "Il processo di acquisizione di conoscenze o abilità.",
+            "ARTICOLAZIONE": "La parte mobile di un'articolazione o la chiarezza dell'eloquio.",
+            "ASSICURAZIONE": "Un contratto che garantisce un risarcimento in caso di danno.",
+            "AUTOREVOLEZZA": "La qualità di essere autorevole.",
+            "AUTOVALUTAZIONE": "L'atto di valutare se stessi.",
+            "AUTORIZZAZIONE": "Il permesso di fare qualcosa.",
+            "BENEFICENZA": "L'attività di fare del bene agli altri.",
+            "CHIARIFICAZIONE": "L'atto di rendere più chiaro o comprensibile.",
+            "CIMITERO": "Luogo di sepoltura.",
+            "CIVILIZZAZIONE": "Il processo di civilizzare o diventare civilizzato.",
+            "CLASSIFICAZIONE": "L'atto di classificare qualcosa.",
+            "CODIFICAZIONE": "L'atto di codificare qualcosa.",
+            "COLLABORATIVO": "Che tende a collaborare.",
+            "CONFORTEVOLE": "Che dà conforto o benessere.",
+            "CONSIDERAZIONE": "L'atto di considerare qualcosa.",
+            "CONSULTAZIONE": "L'atto di consultare un esperto o un documento.",
+            "CONTESTUALIZZAZIONE": "L'atto di inserire qualcosa nel suo contesto.",
+            "CONTROVERSIA": "Una discussione o un dibattito.",
+            "COOPERAZIONE": "L'azione di cooperare.",
+            "CORRISPONDENZA": "La relazione tra due cose o lo scambio di lettere.",
+            "COSMOGRAFIA": "La scienza che descrive l'universo.",
+            "COSTRUZIONE": "L'atto di costruire.",
+            "DECLINAZIONE": "La flessione di un nome, aggettivo o pronome.",
+            "DECOMPOSIZIONE": "L'atto di decomporre.",
+            "DECORAZIONE": "Un ornamento o l'atto di decorare.",
+            "DEMOLIZIONE": "L'atto di demolire.",
+            "DENOMINAZIONE": "Il nome di qualcosa.",
+            "DEPRESSIONE": "Stato di profonda tristezza o un'area abbassata.",
+            "DESCRIZIONE": "La rappresentazione di qualcosa in parole.",
+            "DESIGNAZIONE": "L'atto di designare.",
+            "DETTAGLIATO": "Che contiene molti dettagli.",
+            "DIGITALIZZAZIONE": "La conversione di dati in formato digitale.",
+            "DIREZIONE": "L'atto di dirigere.",
+            "DISCONTINUITÀ": "La mancanza di continuità.",
+            "DISTINZIONE": "L'atto di distinguere.",
+            "DIVERSIFICATO": "Che presenta diversità.",
+            "DOCENTE": "Chi insegna.",
+            "DOCUMENTAZIONE": "L'insieme dei documenti o l'atto di documentare.",
+            "EDUCAZIONE": "Il processo di educare.",
+            "EFFICIENZA": "La capacità di ottenere un risultato con il minimo sforzo.",
+            "ELABORAZIONE": "L'atto di elaborare.",
+            "ELIMINAZIONE": "L'atto di eliminare.",
+            "EMERGENZA": "Una situazione imprevista e urgente.",
+            "EMISSIONE": "L'atto di emettere.",
+            "EMOZIONE": "Una reazione psicofisiologica a uno stimolo.",
+            "ESPRESSIONE": "L'atto di esprimere.",
+            "ESTENSIONE": "L'atto di estendere.",
+            "FACILITAZIONE": "L'atto di facilitare.",
+            "FASCISMO": "Movimento politico fondato da Mussolini.",
+            "FORMAZIONE": "Il processo di formarsi.",
+            "FONDAMENTALE": "Che costituisce il fondamento.",
+            "GESTIONE": "L'atto di gestire.",
+            "GLOBALIZZAZIONE": "Il processo di integrazione a livello globale.",
+            "IDENTITÀ": "La condizione di essere identico.",
+            "ILLUSTRAZIONE": "Un'immagine o l'atto di illustrare.",
+            "IMMAGINAZIONE": "La facoltà di creare immagini mentali.",
+            "IMPEGNO": "Il dedicarsi a un'attività.",
+            "IMPLEMENTAZIONE": "L'atto di implementare.",
+            "INCLUSIONE": "L'atto di includere.",
+            "INDAGINE": "L'atto di indagare.",
+            "INFORMAZIONE": "Un'informazione o l'atto di informare.",
+            "INNOVAZIONE": "L'atto di innovare.",
+            "INSTALLAZIONE": "L'atto di installare.",
+            "ISTRUZIONE": "L'atto di istruire.",
+            "LEADERSHIP": "La capacità di guidare un gruppo.",
+            "LEGITTIMAZIONE": "L'atto di legittimare.",
+            "LOCALIZZAZIONE": "L'atto di localizzare.",
+            "MANUTENZIONE": "L'atto di mantenere in buono stato.",
+            "MATERIALISTICO": "Relativo al materialismo.",
+            "MECCANISMO": "Un sistema di parti che lavorano insieme.",
+            "MEMORIZZAZIONE": "L'atto di memorizzare.",
+            "MOTIVAZIONE": "La spinta ad agire.",
+            "NECESSITÀ": "La condizione di ciò che è necessario.",
+            "NEGATIVITÀ": "La qualità di essere negativo.",
+            "NORMALIZZAZIONE": "L'atto di rendere normale.",
+            "NOTIFICAZIONE": "L'atto di notificare.",
+            "OBBLIGATORIO": "Che si è obbligati a fare.",
+            "OPERAZIONE": "Un'azione o un procedimento.",
+            "ORGANIZZAZIONE": "L'atto di organizzare.",
+            "PARTECIPAZIONE": "L'atto di partecipare.",
+            "PROFESSIONALITÀ": "La qualità di essere professionale.",
+            "PROGRAMMAZIONE": "L'atto di programmare.",
+            "PROMOZIONE": "L'atto di promuovere.",
+            "PROTEZIONE": "L'atto di proteggere.",
+            "QUALIFICAZIONE": "L'atto di qualificare.",
+            "QUANTITATIVO": "Che riguarda la quantità.",
+            "REALTÀ": "La condizione di ciò che è reale.",
+            "REGISTRAZIONE": "L'atto di registrare.",
+            "REGOLAMENTAZIONE": "L'atto di regolare.",
+            "RELAZIONE": "Un rapporto o un legame.",
+            "RENDIMENTO": "Il risultato di un'attività.",
+            "RILEVAZIONE": "L'atto di rilevare.",
+            "RICONOSCIMENTO": "L'atto di riconoscere.",
+            "RISOLUZIONE": "La soluzione di un problema.",
+            "RISPETTO": "Considerazione e riguardo.",
+            "RIUSO": "L'atto di riusare.",
+            "SACRIFICIO": "L'atto di sacrificare.",
+            "SALVAGUARDIA": "La protezione da un pericolo.",
+            "SICUREZZA": "La condizione di essere al sicuro.",
+            "SIGNIFICATO": "Il senso di una parola o di un'azione.",
+            "SVILUPPO": "Il processo di crescita.",
+            "SISTEMATICO": "Che segue un sistema.",
+            "TECNOLOGICO": "Che riguarda la tecnologia.",
+            "TELECAMERA": "Un apparecchio per riprendere immagini a distanza.",
+            "TELEVISORE": "Un apparecchio per la visione della televisione.",
+            "TESTIMONIANZA": "La dichiarazione di un testimone.",
+            "TRASPORTO": "L'atto di trasportare.",
+            "TRATTAMENTO": "Il modo di trattare qualcosa o qualcuno.",
+            "UTILIZZAZIONE": "L'atto di utilizzare.",
+            "VALIDAZIONE": "L'atto di validare.",
+            "VALUTATIVO": "Che riguarda la valutazione.",
+            "VARIABILITÀ": "La qualità di essere variabile.",
+            "VISUALIZZAZIONE": "L'atto di visualizzare.",
+            "VULNERABILE": "Che può essere facilmente danneggiato."
         };
         
         const bodyParts = ['head', 'torso', 'left-arm', 'right-arm', 'left-leg', 'right-leg'];
@@ -257,11 +487,9 @@
         let incorrectGuesses = 0;
         const maxIncorrectGuesses = bodyParts.length;
 
-        // Score
         let score = 0;
         let losses = 0;
 
-        // DOM elements
         const hangmanDrawingEl = document.getElementById('hangman-drawing');
         const gameWordContainer = document.getElementById('game-word-container');
         const keyboardContainer = document.getElementById('keyboard-container');
@@ -269,38 +497,26 @@
         const newGameButton = document.getElementById('new-game-button');
         const scoreEl = document.getElementById('score');
         const lossesCountEl = document.getElementById('losses-count');
-
         const popupOverlay = document.getElementById('popup-overlay');
         const popupTitle = document.getElementById('popup-title');
         const popupMessage = document.getElementById('popup-message');
         const closePopupButton = document.getElementById('close-popup-button');
 
-        /**
-         * Normalizes a string by converting it to uppercase and removing accents.
-         * @param {string} str - The input string.
-         * @returns {string} The normalized string.
-         */
         function normalizeString(str) {
             return str.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         }
 
-        /**
-         * Initializes a new game.
-         */
         function initGame() {
-            // Reset game state
             secretWord = words[Math.floor(Math.random() * words.length)];
             guessedLetters.clear();
             incorrectGuesses = 0;
             gameMessageEl.textContent = '';
-            gameMessageEl.className = 'text-gray-700'; // Reset color
+            gameMessageEl.className = 'text-gray-700';
 
-            // Hide body parts
             bodyParts.forEach(part => {
                 document.getElementById(part).style.visibility = 'hidden';
             });
 
-            // Reset keyboard buttons
             keyboardContainer.innerHTML = '';
             for (let i = 65; i <= 90; i++) {
                 const letter = String.fromCharCode(i);
@@ -332,16 +548,12 @@
             popupOverlay.classList.add('hidden');
         }
 
-        /**
-         * Updates the word display.
-         */
         function updateDisplay() {
             gameWordContainer.innerHTML = '';
             
-            const baseFontSize = 4; // Desired font size in rem
-            const baseLetterSpacing = 0.4; // Desired letter spacing in rem
+            const baseFontSize = 4;
+            const baseLetterSpacing = 0.4;
             
-            // Dynamic font size and letter spacing based on word length
             const wordLength = secretWord.length;
             const containerWidth = gameWordContainer.getBoundingClientRect().width;
             
@@ -368,10 +580,6 @@
             }
         }
 
-        /**
-         * Handles a letter guess from the user.
-         * @param {string} letter - The letter guessed by the user.
-         */
         function handleGuess(letter) {
             const normalizedLetter = normalizeString(letter);
             if (guessedLetters.has(normalizedLetter)) {
@@ -437,34 +645,24 @@
             }
         }
 
-        /**
-         * Ends the game by disabling all letter buttons.
-         */
         function endGame() {
             Array.from(keyboardContainer.children).forEach(button => {
                 button.disabled = true;
             });
         }
         
-        /**
-         * Displays the popup with the given title and message.
-         * @param {string} title - The title of the popup.
-         * @param {string} message - The message to display.
-         */
         function showPopup(title, message) {
             popupTitle.textContent = title;
             popupMessage.innerHTML = message;
             popupOverlay.classList.remove('hidden');
         }
 
-        // Event listeners
         newGameButton.addEventListener('click', initGame);
         window.addEventListener('resize', updateDisplay);
         closePopupButton.addEventListener('click', () => {
             popupOverlay.classList.add('hidden');
         });
 
-        // Start the game on window load
         window.onload = function() {
             initGame();
         };
@@ -472,4 +670,3 @@
     </script>
 </body>
 </html>
-
